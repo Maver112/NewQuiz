@@ -20,12 +20,12 @@ import java.time.Instant;
 public class QuizController {
 
     private QuizService quizService;
-    private QuizConfig quizConfig;
+    private QuizConfig reservationConfig;
 
     @Autowired
     public QuizController(QuizService quizService, QuizConfig quizConfig) {
         this.quizService = quizService;
-        this.quizConfig = quizConfig;
+        this.reservationConfig = quizConfig;
     }
 
     @GetMapping("/start/{subjectCode}")
@@ -34,7 +34,7 @@ public class QuizController {
 
         session.setAttribute("quiz", quiz);
         session.removeAttribute("questionTimestamp");
-        session.setAttribute("secPerQuestion", quizConfig.getSecondsPerQuestion());
+        session.setAttribute("secPerQuestion", reservationConfig.getSecondsPerQuestion());
 
         return "redirect:/quiz/question";
     }
@@ -42,7 +42,7 @@ public class QuizController {
     @GetMapping("/question")
     public String getCurrentQuestion(@SessionAttribute(name = "quiz", required = false) Quiz quiz, HttpSession httpSession) {
         if (quiz == null) {
-            throw new QuizNotAvailableException("There is no quiz in progress right now");
+            throw new QuizNotAvailableException("W tej chwili nie trwa żaden quiz");
         }
 
         Instant instant = (Instant) httpSession.getAttribute("questionTimestamp");
@@ -57,7 +57,7 @@ public class QuizController {
     @PostMapping("/question")
     public String saveAndNext(@SessionAttribute(name = "quiz", required = false) Quiz quiz, HttpSession httpSession, HttpServletRequest request) {
         if (quiz == null) {
-            throw new QuizNotAvailableException("There is no quiz in progress right now");
+            throw new QuizNotAvailableException("W tej chwili nie trwa żaden quiz");
         }
 
         try {
@@ -68,7 +68,7 @@ public class QuizController {
         } catch (Exception e) { }
 
         int currentQuestion = quiz.getCurQuestionNumber();
-        if (currentQuestion == quizConfig.getTotalQuestions()) {
+        if (currentQuestion == reservationConfig.getTotalQuestions()) {
             quizService.saveQuiz(quiz);
             httpSession.removeAttribute("quiz");
             httpSession.removeAttribute("questionTimestamp");
@@ -85,7 +85,7 @@ public class QuizController {
 
     @GetMapping("/result")
     public String result(Model model, @AuthenticationPrincipal User user) {
-        model.addAttribute("quizzes", quizService.getQuizzesByUser(user));
+        model.addAttribute("quizes", quizService.getQuizzesByUser(user));
         return "result";
     }
 }

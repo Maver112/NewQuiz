@@ -14,7 +14,7 @@
     <header>
         <nav>
             <a class="nav-link float-left" th:href="@{/}" href="home.html">Strona główna</a>
-            <a class="nav-link float-left" th:href="@{/quiz/result}" href="result.html">Pokaż rezerwacje</a>
+            <a class="nav-link float-left" th:href="@{/quiz/result}" href="result.html">Zobacz Wyniki</a>
 
             <a class="nav-fancy-link float-right" th:href="@{/login}" href="login.html" sec:authorize="!isAuthenticated()">Login</a>
             <form th:action="@{/logout}" method="post" class="float-right" sec:authorize="isAuthenticated()">
@@ -27,9 +27,9 @@
 
 
     <div>
-        <h1 class="heading text-center top-bottom-margin">Zarezerwuj rodzaj rozrywki</h1>
+        <h1 class="heading text-center top-bottom-margin">Rozwiąż Quiz</h1>
         <div class="grid">
-            <a href="quiz.html" th:href="@{/quiz/start/CS101}" class="quiz-link"><span>Rezerwacja</span></a>
+            <a href="quiz.html" th:href="@{/quiz/start/CS101}" class="quiz-link"><span>Wprowadzenie do informatyki</span></a>
         </div>
     </div>
 </div>

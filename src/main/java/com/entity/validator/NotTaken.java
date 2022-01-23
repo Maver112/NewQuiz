@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface NotTaken {
-    String message() default "username is already taken";
+    String message() default "Nazwa użytkownika jest zajęta";
 
     Class<?>[] groups() default { };
 

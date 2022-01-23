@@ -35,27 +35,27 @@
 <div class="content">
     <header>
         <nav>
-            <a class="nav-link float-left" th:href="@{/}" href="home.html">Home</a>
-            <a class="nav-link float-left" th:href="@{/quiz/result}" href="result.html">Result</a>
+            <a class="nav-link float-left" th:href="@{/}" href="home.html">Strona Główna</a>
+            <a class="nav-link float-left" th:href="@{/quiz/result}" href="result.html">Zobacz wyniki</a>
 
             <a class="nav-fancy-link float-right" th:href="@{/login}" href="login.html" sec:authorize="!isAuthenticated()">Login</a>
             <form th:action="@{/logout}" method="post" class="float-right" sec:authorize="isAuthenticated()">
                 <input type="submit" value="Logout" class="nav-fancy-link">
             </form>
             <a class="nav-fancy-link float-right" sec:authorize="isAuthenticated()"
-               sec:authentication="name">Username</a>
+               sec:authentication="name">Login</a>
         </nav>
     </header>
     <div>
         <div class="timer-container text-center float-right">
-            <div class="timer-title">Time Left (sec)</div>
+            <div class="timer-title">Pozostały czas (sec)</div>
             <div class="timer" id="timer">
 
             </div>
         </div>
 
         <div class="quiz-grid">
-            <h1 class="text-center top-bottom-padding heading"><span th:text="${session.quiz.subject.title}">introduction to programming</span> quiz</h1>
+            <h1 class="text-center top-bottom-padding heading"><span th:text="${session.quiz.subject.title}">Wprowadzenie do informatyki</span> quiz</h1>
 
             <div class="flexbox flexbox-space-between padding clear-both">
                 <div>Question <span th:text="${session.quiz.curQuestionNumber}">1</span> of <span th:text="${session.quiz.questions.size()}">10</span></div>

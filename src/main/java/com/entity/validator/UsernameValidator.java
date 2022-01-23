@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.entity.User;
 import com.repository.UserRepository;
 
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -28,4 +29,6 @@ public class UsernameValidator implements ConstraintValidator<NotTaken, String> 
         }
         return false;
     }
+
+
 }

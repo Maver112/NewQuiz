@@ -24,20 +24,22 @@ public class User implements UserDetails {
     private String firstName;
     private String lastName;
 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,  fetch = FetchType.EAGER)
-    private List<Quiz> quizzes;
+    private List<Quiz> quizes;
 
     public User() {
     }
 
-    public User(Long id, String username, String password, String firstName, String lastName, List<Quiz> quizzes) {
+    public User(Long id, String username, String password, String firstName, String lastName, List<Quiz> quizes) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.quizzes = quizzes;
+        this.quizes = quizes;
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

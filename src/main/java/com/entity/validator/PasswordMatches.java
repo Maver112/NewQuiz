@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PasswordMatches {
-    String message() default "passwords does not match";
+    String message() default "Hasła do siebie nie pasują";
 
     Class<?>[] groups() default { };
 

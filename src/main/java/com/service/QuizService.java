@@ -38,14 +38,14 @@ public class QuizService {
         Subject subject = subjectRepository.getSubjectBySubjectCode(subjectCode);
 
         if (subject == null) {
-            throw new ResourceNotFoundException("Following resource is not available at the moment");
+            throw new ResourceNotFoundException("Dany element jest w tym momencie niedostępny");
         }
 
         List<Question> questions = questionRepository.findRandomQuestionsBySubjectAndSize(
                 subject.getId(), quizConfig.getTotalQuestions());
 
         if (questions.size() < quizConfig.getTotalQuestions()) {
-            throw new ResourceNotFoundException("Following resource is not available at the moment");
+            throw new ResourceNotFoundException("Dany element jest w tym momencie niedostępny");
         }
 
         Quiz quiz = new Quiz();

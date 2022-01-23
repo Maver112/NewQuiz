@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style/main.css" th:href="@{/style/main.css}">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700" rel="stylesheet">
-    <title>Rejestracja miejsc</title>
+    <title>Wyniki</title>
 </head>
 <body>
 <div class="content">
     <header>
         <nav>
             <a class="nav-link float-left" th:href="@{/}" href="home.html">Strona główna</a>
-            <a class="nav-link float-left" th:href="@{/quiz/result}" href="result.html">Rezerwacje</a>
+            <a class="nav-link float-left" th:href="@{/quiz/result}" href="result.html">Zobacz Wyniki</a>
 
             <a class="nav-fancy-link float-right" th:href="@{/login}" href="login.html"
                sec:authorize="!isAuthenticated()">Login</a>
@@ -22,22 +22,22 @@
                 <input type="submit" value="Logout" class="nav-fancy-link">
             </form>
             <a class="nav-fancy-link float-right" sec:authorize="isAuthenticated()"
-               sec:authentication="name">Username</a>
+               sec:authentication="name">Login</a>
         </nav>
     </header>
     <div>
-        <table th:if="${quizzes.size() != 0}">
+        <table th:if="${quizes.size() != 0}">
             <thead>
             <tr>
-                <th>Subject</th>
-                <th>Date ( UTC )</th>
-                <th>Obtained Marks</th>
-                <th>Total Marks</th>
+                <th>Temat Quizu</th>
+                <th>Data ( UTC )</th>
+                <th>Zdobyte punkty</th>
+                <th>Możliwe punkty do zdobycia</th>
             </tr>
             </thead>
 
             <tbody>
-            <tr th:each="quiz : ${quizzes}">
+            <tr th:each="quiz : ${quizes}">
                 <td th:text="${quiz.subject.title}">title</td>
                 <td th:text="${#temporals.format(quiz.instant, 'd MMM yyyy hh:mm a')}">time</td>
                 <td th:text="${quiz.result}">32</td>
@@ -46,7 +46,7 @@
             </tbody>
 
         </table>
-        <div th:if="${quizzes.size() == 0}" class="no-result">No Result Found</div>
+        <div th:if="${quizes.size() == 0}" class="no-result">Nie znaleziono żadnych wyników</div>
     </div>
 </div>
 </body>

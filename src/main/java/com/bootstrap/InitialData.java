@@ -32,10 +32,7 @@ public class InitialData implements ApplicationListener<ApplicationReadyEvent> {
         this.encoder = new BCryptPasswordEncoder();
     }
 
-    /**
-     * This event is executed as late as conceivably possible to indicate that
-     * the application is ready to service requests.
-     */
+
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
         initData();
@@ -49,9 +46,16 @@ public class InitialData implements ApplicationListener<ApplicationReadyEvent> {
 
         Subject CS101 = new Subject();
         CS101.setSubjectCode("CS101");
-        CS101.setTitle("Komputer");
+        CS101.setTitle("Komputery i Technologia");
 
         subjectRepository.save(CS101);
+
+
+        Subject MTH101 = new Subject();
+        MTH101.setSubjectCode("MTH101");
+        MTH101.setTitle("Calculus and Analytical Geometry");
+
+        subjectRepository.save(MTH101);
 
 
         questionRepository.save(createQuestion(
@@ -173,7 +177,6 @@ public class InitialData implements ApplicationListener<ApplicationReadyEvent> {
                 },
                 3
         ));
-
 
     }
 

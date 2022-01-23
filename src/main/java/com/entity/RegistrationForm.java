@@ -14,27 +14,27 @@ import javax.validation.constraints.Size;
 @PasswordMatches
 public class RegistrationForm {
 
-    @NotBlank(message = "username is required")
+    @NotBlank(message = "Login jest wymagany")
     @NotTaken
     private String username;
 
-    @NotBlank(message = "password is required")
-    @Size(min = 8, max = 30, message = "password length must be between 8 and 30")
+    @NotBlank(message = "Hasło jest wymagane")
+    @Size(min = 8, max = 30, message = "Hasło musi mieć od 8 do 30 znaków")
     private String password;
 
     private String confirmPassword;
 
 
-    @NotBlank(message = "first name is required")
+    @NotBlank(message = "Imię jest wymagane")
     private String firstName;
 
-    @NotBlank(message = "last name is required")
+    @NotBlank(message = "Nazwisko jest wymagane")
     private String lastName;
 
     public RegistrationForm() {
     }
 
-    public RegistrationForm(@NotBlank(message = "username is required") String username, @NotBlank(message = "password is required") @Size(min = 8, max = 30, message = "password length must be between 8 and 30") String password, String confirmPassword, @NotBlank(message = "first name is required") String firstName, @NotBlank(message = "last name is required") String lastName) {
+    public RegistrationForm(@NotBlank(message = "Login jest wymagany") String username, @NotBlank(message = "Hasło jest wymagane") @Size(min = 8, max = 30, message = "Długość hasła musi być od 8 do 30 znaków") String password, String confirmPassword, @NotBlank(message = "Imię jest wymagane") String firstName, @NotBlank(message = "Nazwisko jest wymagane") String lastName) {
         this.username = username;
         this.password = password;
         this.confirmPassword = confirmPassword;

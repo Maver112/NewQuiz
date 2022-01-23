@@ -30,7 +30,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handle(Exception e, Model model) {
-        model.addAttribute("heading", "Something went wrong. Try again later.");
+        model.addAttribute("heading", "Coś poszło nie tak spróbuj później.");
         return "error";
     }
 }
