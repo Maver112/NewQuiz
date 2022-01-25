@@ -30,5 +30,12 @@ public class UsernameValidator implements ConstraintValidator<NotTaken, String> 
         return false;
     }
 
+    public static boolean isUserNameValid(String username) {
 
+        String regex = "^[a-zA-Z0-9]{4,10}$";
+        if(username == null){
+            return false;
+        }
+        return username.matches(regex);
+    }
 }

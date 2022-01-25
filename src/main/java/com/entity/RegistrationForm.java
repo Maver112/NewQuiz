@@ -35,6 +35,10 @@ public class RegistrationForm {
     }
 
     public RegistrationForm(@NotBlank(message = "Login jest wymagany") String username, @NotBlank(message = "Hasło jest wymagane") @Size(min = 8, max = 30, message = "Długość hasła musi być od 8 do 30 znaków") String password, String confirmPassword, @NotBlank(message = "Imię jest wymagane") String firstName, @NotBlank(message = "Nazwisko jest wymagane") String lastName) {
+        if(username.isEmpty() || password.isEmpty()){
+            throw new IllegalStateException("Username or password cannot be empty");
+        }
+
         this.username = username;
         this.password = password;
         this.confirmPassword = confirmPassword;
